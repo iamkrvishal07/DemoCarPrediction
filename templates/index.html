@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Car Price Prediction</h1>
+        <form id="predictionForm">
+            <label for="company">Company:</label>
+            <select name="company" id="company">
+                {% for company in companies %}
+                    <option value="{{ company }}">{{ company }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="car_model">Car Model:</label>
+            <select name="car_model" id="car_model">
+                <!-- Options will be populated dynamically -->
+            </select>
+
+            <label for="year">Year:</label>
+            <select name="year" id="year">
+                {% for year in years %}
+                    <option value="{{ year }}">{{ year }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="fuel_type">Fuel Type:</label>
+            <select name="fuel_type" id="fuel_type">
+                {% for fuel_type in fuel_types %}
+                    <option value="{{ fuel_type }}">{{ fuel_type }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="kilo_driven">Kilometers Driven:</label>
+            <input type="number" name="kilo_driven" id="kilo_driven" required>
+
+            <button type="submit">Predict Price</button>
+        </form>
+        <div id="predictionResult"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
